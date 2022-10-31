@@ -1,0 +1,12 @@
+config:
+  target: http://0.0.0.0:8545
+  phases:
+    - duration: 30
+      arrivalRate: 1000
+ 
+scenarios:
+  - name: "ETH Call"
+    flow:
+      - post:
+          url: "/eth"
+          json: {"jsonrpc":"2.0","method":"eth_call","params":[{"data":"0x70a08231000000000000000000000000dca79f1f78b866988081de8a06f92b5e5d316857","to":"0x1a7981d87e3b6a95c1516eb820e223fe979896b3"},"latest"],"id":56291820}

@@ -13,5 +13,10 @@ scenarios:
     flow:
       - function: single_call
       - loop:
-        - send: "{{ query }}"
+        - send:
+            payload: "{{ query }}"
+        #     capture:
+        #       json: "$"
+        #       as: "res"
+        # - log: "Response = {{ res }}"
         count: 50

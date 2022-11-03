@@ -1,0 +1,22 @@
+config:
+  target: ws://0.0.0.0:8545/eth
+  phases:
+    - duration: 30
+      arrivalRate: 20
+      name: Peak Load
+  processor: "./processor.js"
+
+ 
+scenarios:
+  - name: "ETH Call"
+    engine: ws
+    flow:
+      - function: single_call
+      - loop:
+        - send:
+            payload: "{{ query }}"
+        #     capture:
+        #       json: "$"
+        #       as: "res"
+        # - log: "Response = {{ res }}"
+        count: 50

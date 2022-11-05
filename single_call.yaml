@@ -7,10 +7,11 @@ config:
  
 scenarios:
   - name: "ETH Call"
+    beforeRequest: single_call
+    afterResponse: check_response
     flow:
-      - function: single_call
       - loop:
-        - post:
-            url: "/eth"
-            json: "{{ query }}"
+          - post:
+              url: "/eth"
+              json: {}
         count: 50

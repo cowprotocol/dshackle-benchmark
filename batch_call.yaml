@@ -8,8 +8,9 @@ config:
  
 scenarios:
   - name: "ETH Call"
+    beforeRequest: batch_call
+    afterResponse: check_response
     flow:
-      - function: batch_call
       - post:
           url: "/eth"
-          json: "{{ query }}"
+          json: {}

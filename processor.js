@@ -43,13 +43,12 @@ function check_response(_req, res, _context, events, next) {
     responses.forEach(() => events.emit("rate", "rpc.request_rate"));
     events.emit("counter", "rpc.responses_success", success);
     events.emit("counter", "rpc.responses_error", errors);
-
-    return next();
   } catch (err) {
     console.log(`${err}: ${res.body}`);
     events.emit("counter", "rpc.invalid_json", 1);
-    return next();
   }
+  
+  return next();
 }
 
 module.exports = {
